@@ -1,0 +1,10 @@
+services:
+  mini-feedback:
+    build: .
+    ports:
+      - "${PORT:-52717}:${PORT:-52717}"
+    env_file:
+      - .env
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped

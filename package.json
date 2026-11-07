@@ -1,0 +1,56 @@
+{
+  "name": "mini-feedback",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "author": "john-walks-slow",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/john-walks-slow/mini-feedback"
+  },
+  "homepage": "https://github.com/john-walks-slow/mini-feedback",
+  "bugs": {
+    "url": "https://github.com/john-walks-slow/mini-feedback/issues"
+  },
+  "keywords": [
+    "feedback",
+    "bug-report",
+    "screenshot",
+    "self-hosted",
+    "sqlite"
+  ],
+  "engines": {
+    "node": ">=22.5"
+  },
+  "type": "module",
+  "description": "A self-hosted feedback inbox for web apps",
+  "scripts": {
+    "dev": "concurrently -k -n server,admin -c cyan,magenta \"pnpm dev:server\" \"pnpm dev:admin\"",
+    "dev:server": "tsx watch src/server/index.ts",
+    "dev:admin": "vite",
+    "build": "vite build && vite build --config vite.widget.config.ts && cp node_modules/@zumer/snapdom/dist/snapdom.js dist/snapdom.js",
+    "start": "node --disable-warning=ExperimentalWarning --import tsx src/server/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@hono/node-server": "^2.1.5",
+    "@zumer/snapdom": "^3.4.0",
+    "hono": "^4.13.14",
+    "lucide-react": "^1.61.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "concurrently": "^10.0.6",
+    "tailwindcss": "^4.3.3",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.5"
+  },
+  "packageManager": "pnpm@11.24.0"
+}
